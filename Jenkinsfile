@@ -1,7 +1,7 @@
 pipeline {
-    agent { node { label "maven-sonarqube-node" } }   
+    agent { node { label "MAVEN-SONAR" } }   
     parameters {
-      choice(name: 'aws_account',choices: ['999568710647', '4568366404742', '922266408974','576900672829'], description: 'aws account hosting image registry')
+      choice(name: 'aws_account',choices: ['654654193818', '4568366404742', '922266408974','576900672829'], description: 'aws account hosting image registry')
       choice(name: 'Environment', choices: ['Dev', 'QA', 'UAT', 'Prod'], description: 'Target environment for deployment')
       string(name: 'ecr_tag', defaultValue: '1.7.0', description: 'Assign the ECR tag version for the build')
     }
@@ -13,7 +13,7 @@ pipeline {
     stages {
     stage('1. Git Checkout') {
       steps {
-        git branch: 'release', credentialsId: 'Github-pat', url: 'https://github.com/ndiforfusi/addressbook.git'
+        git branch: 'release', credentialsId: 'Github-pat', url: 'https://github.com/mbwork1/addressbook.git'
       }
     }
     stage('2. Build with Maven') { 
@@ -29,9 +29,9 @@ pipeline {
               withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
                       sh """
                       ${scannerHome}/bin/sonar-scanner  \
-                      -Dsonar.projectKey=addressbook-application \
-                      -Dsonar.projectName='addressbook-application' \
-                      -Dsonar.host.url=https://sonarqube.dominionsystem.org \
+                      -Dsonar.projectKey=addressbook-applcation \
+                      -Dsonar.projectName='addressbook-applcation' \
+                      -Dsonar.host.url=http://52.38.141.146:9000 \
                       -Dsonar.token=${SONAR_TOKEN} \
                       -Dsonar.sources=src/main/java/ \
                       -Dsonar.java.binaries=target/classes \
@@ -68,13 +68,14 @@ pipeline {
 
     stage('7. Email Notification') {
       steps {
-        mail bcc: 'fusisoft@gmail.com', body: '''Build is Over. Check the application using the URL below:
-         https://app.dominionsystem.org/addressbook-1.0
-         Let me know if the changes look okay.
-         Thanks,
-         Dominion System Technologies,
-         +1 (313) 413-1477''', 
-         subject: 'Application was Successfully Deployed!!', to: 'fusisoft@gmail.com'
+        echo 'Success'
+        // mail bcc: 'fusisoft@gmail.com', body: '''Build is Over. Check the application using the URL below:
+        //  https://app.dominionsystem.org/addressbook-1.0
+        //  Let me know if the changes look okay.
+        //  Thanks,
+        //  Dominion System Technologies,
+        //  +1 (313) 413-1477''', 
+        //  subject: 'Application was Successfully Deployed!!', to: 'fusisoft@gmail.com'
       }
     }
   }
