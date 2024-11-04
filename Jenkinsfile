@@ -3,7 +3,7 @@ pipeline {
     parameters {
       choice(name: 'aws_account',choices: ['654654193818', '4568366404742', '922266408974','576900672829'], description: 'aws account hosting image registry')
       choice(name: 'Environment', choices: ['Dev', 'QA', 'UAT', 'Prod'], description: 'Target environment for deployment')
-      string(name: 'ecr_tag', defaultValue: '1.7.0', description: 'Assign the ECR tag version for the build')
+      string(name: 'ecr_tag', defaultValue: '1.8.0', description: 'Assign the ECR tag version for the build')
     }
 
     tools {
@@ -31,7 +31,7 @@ pipeline {
                       ${scannerHome}/bin/sonar-scanner  \
                       -Dsonar.projectKey=addressbook-applcation \
                       -Dsonar.projectName='addressbook-applcation' \
-                      -Dsonar.host.url=http://35.94.168.54:9000 \
+                      -Dsonar.host.url=http://54.203.255.160:9000 \
                       -Dsonar.token=${SONAR_TOKEN} \
                       -Dsonar.sources=src/main/java/ \
                       -Dsonar.java.binaries=target/classes \
