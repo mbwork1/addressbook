@@ -9,7 +9,7 @@
     <version>1.0</version>
     <packaging>war</packaging>
     <name>AddressBook Vaadin App</name>
-    
+
     <properties>
         <java.version>17</java.version>
         <spring-boot.version>2.7.15</spring-boot.version>
@@ -141,4 +141,3 @@
         </plugins>
     </build>
 </project>
-
