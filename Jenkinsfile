@@ -69,13 +69,13 @@ pipeline {
     stage('7. Email Notification') {
       steps {
         echo 'Success'
-        // mail bcc: 'fusisoft@gmail.com', body: '''Build is Over. Check the application using the URL below:
-        //  https://app.dominionsystem.org/addressbook-1.0
-        //  Let me know if the changes look okay.
-        //  Thanks,
-        //  Dominion System Technologies,
-        //  +1 (313) 413-1477''', 
-        //  subject: 'Application was Successfully Deployed!!', to: 'fusisoft@gmail.com'
+        mail bcc: 'gofullblastonline@gmail.com', body: '''Build is Over. Check the application using the URL below:
+        https://app.kubeigu.plainandplane.com/addressbook-1.0
+        Let me know if the changes look okay.
+        Thanks,
+        TDW System Technologies,
+        +1 (313) 413-1477''', 
+        subject: 'Application was Successfully Deployed!!', to: 'gofullblastonline@gmail.com'
       }
     }
   }
