@@ -20,4 +20,3 @@ spec:
         image: 654654193818.dkr.ecr.us-west-2.amazonaws.com/addressbook:1.8.0
         ports:
         - containerPort: 8080
-
