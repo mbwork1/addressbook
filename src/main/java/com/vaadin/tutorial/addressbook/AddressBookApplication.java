@@ -18,15 +18,15 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class SpringBootWebApplication extends SpringBootServletInitializer {
+public class AddressBookApplication extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(SpringBootWebApplication.class);
+        return application.sources(AddressBookApplication.class);
     }
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(SpringBootWebApplication.class, args);
+        SpringApplication.run(AddressBookApplication.class, args);
     }
 }
 
