@@ -1,4 +1,4 @@
-FROM tomcat:9.0.96-jdk11
+FROM tomcat:9.0.96-jdk17
 
 # Add your WAR file to the Tomcat webapps directory
 ADD ./target/addressbook-1.0.war /usr/local/tomcat/webapps/
